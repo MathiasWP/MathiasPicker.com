@@ -6,3 +6,8 @@ how i like to experiment/create things when programming front-end stuff.
 Usually i like to split up my code into different modules, but i've kept
 everything in one place so that people who are interested in examining my code
 can do so.
+
+Want to contact me? Send me an 📧: mathiaswpicker@gmail.com
+
+
+Made with ☕ and ❤️ in Norway.
