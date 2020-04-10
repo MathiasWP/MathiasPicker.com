@@ -1,4 +1,4 @@
-# Mathias-Picker.com
+# MathiasPicker.com 👨🏽‍💻
 
 All code is written independently and fairly represents my front-end JavaScipt and CSS skills +
 how i like to experiment/create things when programming front-end stuff.
