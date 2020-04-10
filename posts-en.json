@@ -1,0 +1,37 @@
+[
+  {
+    "id": "about-me",
+    "name": "About me",
+    "category": "About me",
+    "text": "Hei igjen! Nå som du allerede har fått en liten intro om meg behøver ikke skrive veldig mye om meg selv på denne sliden. Men for å utdype litt mer kan jeg fortelle at jeg for tiden studerer Digital Forretningsutivkling på NTNU i Trondheim, og har i løpet av tiden min her oppe funnet ut at jeg liker å programmere. Sånn skikkelig. Dette kombinert med at jeg liker å lage ting hvor jeg kan la fantasien få utfordre seg litt, gjorde at jeg falt jeg fort inn i front-end aspektet av programmering. For meg er et godt brukergrensesnitt portalen for å virkelig få utnyttet hele potensialet til et digitalt produkt - og dessverre ser jeg for ofte at dette går til spille. Derfor gjør jeg det beste jeg kan for å utvikle meg på denne fronten og kunne bli en bidragsyter der det trengs."
+  },
+  {
+    "id": "github",
+    "name": "GitHub",
+    "category": "GitHub"
+  },
+  {
+    "id": "hovl",
+    "name": "HØVL",
+    "category": "Projects",
+    "text": "HØVL (https://hovl.no) er pro tempore det største utviklingsprosjektet jeg har jobbet med. Som medeier i selskapet så jeg det som min rolle å forsikre at vår nettløsning ikke skulle være et bremsende element for vår tjeneste. For meg var det viktig å kunne klare å skape et produkt som både kombinerte moderne og stilrent design, samtidig som brukeropplevelsen ikke skulle bli satt på spill av dette. Sammen med en medstudent på NTNU lagde vi hele infrastukturen og back-enden til tjenesten på egen hånd, og skapte en REST API som jeg kunne benytte meg av på front-enden. All front-end, både kode og design, er hundre prosent selvutviklet. Prosjektet er i dag vår aktive løsning for å håndtere betalinger, innloggede brukere og et admin-panel som har revolusjonert håndteringen av leveranser for vår del. Løsningen vi hadde tidligere fått levert fra en tredjepart vår rett og slett ubrukelig, og å kunne anskaffe oss et admin-panel som var skreddersydd til oss selv var en stor drivkraft for hele prosjektet. Adminpanelet håndterer leveranser helautomatisk, og autogenerer et excel ark som er formatert lik posten sin pakkeseddel, slik at det eneste vi behøver å gjøre er å trykke på én knapp for å håndtere alle dagens leveranser. I tillegg til å redusere håndteringen av leveranser fra 20+ minutter til et par sekunder, har vi også integrert rabattkoder, nyhetsbrev og full administrasjon over brukere på siden fra vår administrerende web-app."
+  },
+  {
+    "id": "scrollprogressbar",
+    "name": "ScrollProgressBar.js",
+    "category": "Projects",
+    "text": "ScrollProgressBar.js (https://scrollprogressbar.github.io) er et Javascript-bibliotek som autogenerer en indikator for hvor langt en bruker har scrollet på nettsiden. Selv om det allerede finnes liknende bibliotek allerede, var det ikke selve 'produktet' som var det viktigste for meg i dette prosjektet. Helt siden jeg begynte å programmere har jeg sett på et Javascript-bibliotek som svart magi og satt det som et personlig mål å en dag lage noe slikt selv. Jeg satt det også som et mål å klare å gjøre biblioteket kompatibel helt ned til IE 9 uten å benytte meg an en compiler som Babel. Resultatet ble suksessfullt, og selv om det ikke er mitt største kodeprosjekt, er jeg nok litt ekstra stolt på grunn av den emosjonelle tilknytningen til å skulle klare å lage et Javascript-bilbiotek helt på egen hånd."
+  },
+  {
+    "id": "side",
+    "name": "Online Resume",
+    "category": "Projects",
+    "text": "Tenkte jeg også kunne skrive litt om siden siden dette også har vært et morsomt prosjekt for meg. Jeg har gått litt tilbake til gamle røtter, og laget et minimalistisk prosjekt som kun består av én css fil, én javascript fil, én (tom) html fil og en .json fil som 'databasen' til disse innleggende. Årsaken til dette var at jeg ville kombinere kunnskapen jeg har opparbeidet med gjennom den siste tiden med en utviklingsprosess som ikke benytter seg av noe annet enn meg selv (ikke noe Babel, Scss, Webpack, NodeJS osv). Hele nettsiden og alle animasjoner blir laget i én enkel Javascript fil, sammen med CSS Keyframes. Det er hverken det mest optimale for SEO eller for en effektiv utivklingsprosess, men for dette prosjektet var ikke det så veldig viktig. Jeg ville leke meg frem, skape noe litt annerledes og egentlig bare kose meg. Det klarte jeg, og jeg fornøyd med sluttresultatet - som er det viktigste"
+  },
+  {
+    "id": "contact",
+    "name": "Contact",
+    "category": "Contact",
+    "text": "Om du enten vil slå av en prat eller har ønsker om å diskutere jobbrelaterte prosjekter, kan du kontakte meg på: <p>Kontakt meg på telefon <a href='tel:004790917570'>90917570</a></p><p>Kontakt meg på epost <a href='mailto:mathiaswpicker@gmail.com'>mathiaswpicker@gmail.com</a></p>"
+  }
+]
