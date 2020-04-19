@@ -2,8 +2,13 @@
  * (c) 2020 Mathias Picker | MIT License
  * Personal website for Mathias Picker - by Mathias Picker.
  *
- * All code is written independently and fairly represents my JavaScipt coding skills and
+ * All code is written independently and fairly represents my JavaScipt coding (as of 19. April 2020) and
  * how i like to experiment/create things when programming front-end stuff.
+ * Actually i'd say this code mostly represents my experimentation and how i just let my mind
+ * have fun without caring to much about readabiliy.
+ *
+ * If you really want to see the best representation of my coding skills, then check
+ * out my NPM project 'makemy': https://github.com/make-my/makemy
  *
  * Usually i like to split up my code into different modules, but i've kept
  * everything in one place so that people who are interested in examining my code
@@ -240,6 +245,188 @@ function showIntro(again) {
     element.innerHTML = '';
   }
 
+  /**
+   * Here's the rounds split up into functions
+   */
+
+  const roundTwo = () => {
+    elementOne.classList.add('i-am');
+    elementOne.textContent = text.myNameIsMathias[language];
+
+    elementTwo.classList.add('i-like');
+    elementTwo.classList.add('blinky');
+
+    elementTwo.textContent = '> ';
+
+    elementOne.onanimationend = () => {
+      // Turn text into arrray and reverse so it gets input correct way
+      const sentence = text.andIAmAnFrontEnd[language].split('').reverse();
+
+      // Typing animation
+      const interval = setInterval(() => {
+        sentence.length === 0
+          ? clearInterval(interval)
+          : (elementTwo.textContent += sentence.pop());
+      }, 100);
+    };
+
+    // Return animation amount
+    // Animation amount has to be 3 this round because of pseudo-element with animation
+    return 3;
+  };
+
+  const roundThree = () => {
+    elementOne.classList.add('front-end-1');
+
+    // Splitting up sentence so that each word can get seperate animation
+    const sentence = text.myFocusIs[language].split(' ');
+
+    // Creating the elements for the sentence, giving each word an animation with a delay
+    for (let i = 0; i < sentence.length; i++) {
+      const wordElement = document.createElement('span');
+
+      wordElement.textContent = sentence[i];
+
+      wordElement.classList.add(`reveal-${i + 1}`);
+      wordElement.classList.add('start');
+
+      elementOne.appendChild(wordElement);
+
+      // Remove class after animation so that opacity doesn't stay at 0
+      wordElement.addEventListener('animationend', function() {
+        this.classList.remove('start');
+      });
+    }
+
+    elementTwo.classList.add('front-end-2');
+    elementTwo.classList.add('invisible');
+
+    elementTwo.textContent = text.modernAnd[language];
+
+    // Creating own element for the click-animation
+    const spanElement = document.createElement('span');
+    spanElement.textContent = text.humancenteredDesign[language];
+
+    elementTwo.appendChild(spanElement);
+
+    // Timer for when the cursor will "click" on element
+    setTimeout(() => {
+      spanElement.classList.add('focused');
+    }, 5610);
+
+    elementTwo.onanimationend = function() {
+      this.classList.remove('invisible');
+    };
+
+    return 2 + sentence.length;
+  };
+
+  const roundFour = () => {
+    elementOne.classList.add('achieve');
+    elementOne.textContent = text.toAchieveThis[language];
+
+    // List of coding-stuff
+    const words = [
+      'HTML',
+      'SRCSET',
+      'SVG',
+      'CSS',
+      'Flex',
+      'Grid',
+      'Keyframes',
+      'Variables',
+      'SCSS',
+      'Media queries',
+      'JavaScript',
+      '(ES6+)',
+      'Async/await',
+      'REST',
+      'JSON',
+      'React',
+      'NodeJS',
+      'Express',
+      'Handlebars',
+      'Babel',
+      'Webpack',
+      'Github',
+      text.observation[language],
+      text.experimentation[language]
+    ];
+
+    elementTwo.classList.add('i-code');
+    elementTwo.classList.add('blinky');
+
+    elementTwo.textContent = '> ';
+
+    // Some interval and timeouts for the terminal-animation
+    elementOne.onanimationend = () => {
+      setTimeout(() => {
+        let sentence = text.catTerminal[language];
+
+        // Typing animation
+        function typeSentence(first) {
+          // Turn text into arrray and reverse so it gets input correct way
+          sentence = sentence.split('').reverse();
+
+          // Start typing
+          const type = setInterval(() => {
+            if (first) {
+              if (sentence.length === 0) {
+                clearInterval(type);
+
+                elementTwo.classList.add('static');
+                elementTwo.classList.remove('blinky');
+                addWords();
+
+                return;
+              }
+              elementTwo.textContent += sentence.pop();
+            } else {
+              if (sentence.length === 0) {
+                clearInterval(type);
+
+                return;
+              }
+              elementTwo.innerHTML += sentence.pop();
+            }
+          }, 100);
+        }
+
+        function addWords() {
+          let j = 0;
+
+          const addWords = setInterval(() => {
+            if (j === words.length) {
+              elementTwo.innerHTML += '> ';
+              clearInterval(addWords);
+              elementTwo.classList.add('blinky-2');
+              elementTwo.scroll(0, elementTwo.scrollHeight);
+
+              setTimeout(() => {
+                sentence = `open -a "${nettleser}" ${text.homepage[language]}.html`;
+                typeSentence(false);
+              }, 1200);
+
+              return;
+            }
+
+            const newLine = document.createElement('p');
+            newLine.textContent = `> ${words[j]}`;
+
+            elementTwo.appendChild(newLine);
+
+            elementTwo.scroll(0, elementTwo.scrollHeight);
+
+            j++;
+          }, 200);
+        }
+
+        typeSentence(true);
+      }, 500);
+    };
+    return 3;
+  };
+
   // Looping through the different intro-sections with this one eventListener on parent
   content.addEventListener(
     'animationend',
@@ -266,197 +453,20 @@ function showIntro(again) {
         switch (round) {
           case 2:
             this.classList.add('column');
-
-            elementOne.classList.add('i-am');
-            elementOne.textContent = text.myNameIsMathias[language];
-
-            elementTwo.classList.add('i-like');
-            elementTwo.classList.add('blinky');
-
-            elementTwo.textContent = '> ';
-
-            elementOne.onanimationend = () => {
-              // Turn text into arrray and reverse so it gets input correct way
-              const sentence = text.andIAmAnFrontEnd[language]
-                .split('')
-                .reverse();
-
-              // Typing animation
-              const interval = setInterval(() => {
-                sentence.length === 0
-                  ? clearInterval(interval)
-                  : (elementTwo.textContent += sentence.pop());
-              }, 100);
-            };
-
-            // Animation amount has to be 3 this round because of pseudo-element with animation
-            animationAmount = 3;
+            animationAmount = roundTwo();
             break;
 
           case 3:
             this.classList.add('column');
-
-            elementOne.classList.add('front-end-1');
-
-            // Splitting up sentence so that each word can get seperate animation
-            const sentence = text.myFocusIs[language].split(' ');
-
-            // Creating the elements for the sentence, giving each word an animation with a delay
-            for (let i = 0; i < sentence.length; i++) {
-              const wordElement = document.createElement('span');
-
-              wordElement.textContent = sentence[i];
-
-              wordElement.classList.add(`reveal-${i + 1}`);
-              wordElement.classList.add('start');
-
-              elementOne.appendChild(wordElement);
-
-              // Remove class after animation so that opacity doesn't stay at 0
-              wordElement.addEventListener('animationend', function() {
-                this.classList.remove('start');
-              });
-            }
-
-            elementTwo.classList.add('front-end-2');
-            elementTwo.classList.add('invisible');
-
-            elementTwo.textContent = text.modernAnd[language];
-
-            // Creating own element for the click-animation
-            const spanElement = document.createElement('span');
-            spanElement.textContent = text.humancenteredDesign[language];
-
-            elementTwo.appendChild(spanElement);
-
-            // Timer for when the cursor will "click" on element
-            setTimeout(() => {
-              spanElement.classList.add('focused');
-            }, 5610);
-
-            elementTwo.onanimationend = function() {
-              this.classList.remove('invisible');
-            };
-
-            // Animation amount has to increase for every word in sentence because they have an animation each
-            animationAmount = 2 + sentence.length;
+            animationAmount = roundThree();
             break;
 
           case 4:
             this.classList.add('column');
-
-            elementOne.classList.add('achieve');
-            elementOne.textContent = text.toAchieveThis[language];
-
-            // List of coding-stuff
-            const words = [
-              'HTML',
-              'SRCSET',
-              'SVG',
-              'CSS',
-              'Flex',
-              'Grid',
-              'Keyframes',
-              'Variables',
-              'SCSS',
-              'Media queries',
-              'JavaScript',
-              '(ES6+)',
-              'Async/await',
-              'REST',
-              'JSON',
-              'React',
-              'NodeJS',
-              'Express',
-              'Handlebars',
-              'Babel',
-              'Webpack',
-              'Github',
-              text.observation[language],
-              text.experimentation[language]
-            ];
-
-            elementTwo.classList.add('i-code');
-            elementTwo.classList.add('blinky');
-
-            elementTwo.textContent = '> ';
-
-            // Some interval and timeouts for the terminal-animation
-            elementOne.onanimationend = () => {
-              setTimeout(() => {
-                let sentence = text.catTerminal[language];
-
-                // Typing animation
-                function typeSentence(first) {
-                  // Turn text into arrray and reverse so it gets input correct way
-                  sentence = sentence.split('').reverse();
-
-                  // Start typing
-                  const type = setInterval(() => {
-                    if (first) {
-                      if (sentence.length === 0) {
-                        clearInterval(type);
-
-                        elementTwo.classList.add('static');
-                        elementTwo.classList.remove('blinky');
-                        addWords();
-
-                        return;
-                      }
-                      elementTwo.textContent += sentence.pop();
-                    } else {
-                      if (sentence.length === 0) {
-                        clearInterval(type);
-
-                        return;
-                      }
-                      elementTwo.innerHTML += sentence.pop();
-                    }
-                  }, 100);
-                }
-
-                function addWords() {
-                  let j = 0;
-
-                  const addWords = setInterval(() => {
-                    if (j === words.length) {
-                      elementTwo.innerHTML += '> ';
-                      clearInterval(addWords);
-                      elementTwo.classList.add('blinky-2');
-                      elementTwo.scroll(0, elementTwo.scrollHeight);
-
-                      setTimeout(() => {
-                        sentence = `open -a "${nettleser}" ${text.homepage[language]}.html`;
-                        typeSentence(false);
-                      }, 1200);
-
-                      return;
-                    }
-
-                    const newLine = document.createElement('p');
-                    newLine.textContent = `> ${words[j]}`;
-
-                    elementTwo.appendChild(newLine);
-
-                    elementTwo.scroll(0, elementTwo.scrollHeight);
-
-                    j++;
-                  }, 200);
-                }
-
-                typeSentence(true);
-              }, 500);
-            };
-
-            animationAmount = 3;
-
-            break;
-
-          default:
+            animationAmount = roundFour();
             break;
         }
 
-        // Reset
         reset = false;
       }
 
@@ -497,8 +507,6 @@ function showIntro(again) {
               );
             };
             break;
-          default:
-            break;
         }
 
         round++;
@@ -511,8 +519,12 @@ function showIntro(again) {
 // Automatically show intro when entering page
 showIntro();
 
-// Creating the page when intro is done.
-// Sure i could easily make everything in HTML, but this is (more) fun/challenging. And it's my website, i can do what i want.
+/**
+ * Creating the page when intro is done.
+ * Sure i could easily make everything in HTML, but this is (more) fun/challenging. And it's my website, i can do what i want.
+ * Also if i want to add more pages, they will be dynamically added here so i don't need to edit any HTML.
+ */
+
 async function createPage() {
   main.classList.remove('cinema-mode');
 
