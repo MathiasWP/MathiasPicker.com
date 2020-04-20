@@ -6,7 +6,7 @@ Actually i'd say this code mostly represents my experimentation and how i just l
 have fun without caring to much about readabiliy.
 
 If you really want to see the best representation of my coding skills, then check
-out my NPM project 'makemy': https://github.com/make-my/makemyexperiment/create
+out my NPM project 'makemy': https://github.com/make-my/makemy
  
 Usually i like to split up my code into different modules, but i've kept
 everything in one place so that people who are interested in examining my code
