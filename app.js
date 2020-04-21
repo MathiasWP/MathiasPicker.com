@@ -5,7 +5,7 @@
  * All code is written independently and fairly represents my JavaScipt coding (as of 19. April 2020) and
  * how i like to experiment/create things when programming front-end stuff.
  * Actually i'd say this code mostly represents my experimentation and how i just let my mind
- * have fun without caring to much about readabiliy.
+ * have fun without caring to much about readability.
  *
  * If you really want to see the best representation of my coding skills, then check
  * out my NPM project 'makemy': https://github.com/make-my/makemy
@@ -88,6 +88,12 @@ const text = {
       'Siden du er på telefon behøver du kun å swipe til høyre eller venstre for å navigere mellom sidene.',
     en:
       'Since you are on a mobile device, you only need to swipe right or left to navigate between the pages.'
+  },
+  scrollingOnThisPage: {
+    nb:
+      'Merk: Scrolling på frontsiden er horisontal. Du kan navigere med menyen øverst på siden eller ved å scrolle til siden.',
+    en:
+      'Note: The scrolling on this websites front-menu is horisontal. You can navigate with the menu on the top, or by scrolling left or right.'
   },
   clickHereToCloseOverlay: {
     nb: 'Trykk her for å lukke overlay',
@@ -629,16 +635,20 @@ async function createPage() {
   };
 
   if (!cookie) {
-    if (window.matchMedia('(max-width: 63.74em)').matches && isMobile()) {
-      const infoAlert = document.createElement('div');
-      infoAlert.textContent = text.sinceYouAreOnMobile[language];
-      infoAlert.classList.add('info-popup');
-      fullPage.appendChild(infoAlert);
+    const infoAlert = document.createElement('div');
 
-      infoAlert.addEventListener('animationend', function() {
-        fullPage.removeChild(this);
-      });
+    if (window.matchMedia('(max-width: 63.74em)').matches && isMobile()) {
+      infoAlert.textContent = text.sinceYouAreOnMobile[language];
+    } else {
+      infoAlert.textContent = text.scrollingOnThisPage[language];
     }
+
+    infoAlert.classList.add('info-popup');
+    fullPage.appendChild(infoAlert);
+
+    infoAlert.addEventListener('animationend', function() {
+      fullPage.removeChild(this);
+    });
     // Session cookie so that you don't need to see the whole intro again
     document.cookie = 'sessionId=beenherebefore';
   }

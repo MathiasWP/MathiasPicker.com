@@ -1191,29 +1191,15 @@ CONTENT
 }
 
 .navigation-showcase::-webkit-scrollbar-track {
-  background: rgba(var(--dark-grey), 0.01);
+  background: rgba(var(--dark-grey), 0.05);
 }
 
 .navigation-showcase::-webkit-scrollbar-thumb {
-  background-color: rgba(var(--dark-grey), var(--scroll-thumb));
+  background-color: rgba(var(--dark-grey), 0.5);
 }
 
 .navigation-showcase::-webkit-scrollbar-thumb:hover {
-  background-color: rgba(var(--dark-grey), 0.15);
-}
-
-@media screen and (max-width: 32.5em) {
-  .navigation-showcase::-webkit-scrollbar-track {
-    background: rgba(var(--dark-grey), 0.05);
-  }
-
-  .navigation-showcase::-webkit-scrollbar-thumb {
-    background-color: rgba(var(--dark-grey), 0.5);
-  }
-
-  .navigation-showcase::-webkit-scrollbar-thumb:hover {
-    background-color: rgba(var(--dark-grey), 0.5);
-  }
+  background-color: rgba(var(--dark-grey), 0.5);
 }
 
 .navigation-showcase .item-div {
@@ -1266,30 +1252,6 @@ CONTENT
   height: calc(var(--content-height));
 }
 
-.navigation-showcase:before {
-  content: '<';
-  position: absolute;
-  height: 10rem;
-  left: 1rem;
-  top: calc(50% - 5rem);
-  z-index: 5;
-  transform: scaleY(1.8);
-  opacity: var(--left-scroll);
-  transition: opacity 0.35s ease-in-out;
-}
-
-.navigation-showcase:after {
-  content: '>';
-  position: absolute;
-  height: 10rem;
-  right: 1rem;
-  top: calc(50% - 5rem);
-  z-index: 5;
-  transform: scaleY(1.8);
-  opacity: var(--right-scroll);
-  transition: opacity 0.35s ease-in-out;
-}
-
 .navigation-showcase .content-title {
   font-size: 6rem;
 }
@@ -1297,14 +1259,39 @@ CONTENT
 .navigation-showcase .content-text {
   font-size: 3.5rem;
 }
-
-@media screen and (max-width: 37.5em) {
+@media screen and (max-width: 63.74em) {
   .navigation-showcase .content-title {
     font-size: 5rem;
   }
 
   .navigation-showcase .content-text {
     font-size: 3rem;
+  }
+}
+
+@media screen and (max-width: 37.5em) {
+  .navigation-showcase:before {
+    content: '<';
+    position: absolute;
+    height: 10rem;
+    left: 1rem;
+    top: calc(50% - 5rem);
+    z-index: 5;
+    transform: scaleY(1.8);
+    opacity: var(--left-scroll);
+    transition: opacity 0.35s ease-in-out;
+  }
+
+  .navigation-showcase:after {
+    content: '>';
+    position: absolute;
+    height: 10rem;
+    right: 1rem;
+    top: calc(50% - 5rem);
+    z-index: 5;
+    transform: scaleY(1.8);
+    opacity: var(--right-scroll);
+    transition: opacity 0.35s ease-in-out;
   }
 }
 
@@ -1441,20 +1428,23 @@ keyframes makes it so that the animation also will work smoothly on iPhone Chrom
   height: calc(100% - 14rem);
   margin: 4rem;
   margin-bottom: 10rem;
+  display: flex;
 }
 
 @media screen and (max-width: 37.5em) {
   .content-text-wrapper {
     align-self: start;
     height: calc(100% - 13rem);
+    display: block;
   }
 }
-
 .content-text-full {
   color: rgb(255, 255, 255);
   font-size: 3rem;
   hyphens: auto;
   line-height: 1.35;
+  column-count: 2;
+  align-self: center;
 }
 
 .content-text-full p {
@@ -1469,6 +1459,9 @@ keyframes makes it so that the animation also will work smoothly on iPhone Chrom
 }
 
 @media screen and (max-width: 37.5em) {
+  .content-text-full {
+    column-count: 1;
+  }
   .content-text-full p a {
     display: block;
   }
@@ -1525,10 +1518,16 @@ keyframes makes it so that the animation also will work smoothly on iPhone Chrom
   display: grid;
   height: 100%;
   z-index: 10;
-  padding: 2rem;
-  animation: swipe 1.4s ease-in-out 3s 1;
+  padding: 2rem 15rem;
+  animation: swipe 1.4s ease-in-out 4.5s 1;
   align-content: center;
   text-align: center;
   background-color: rgb(var(--white));
   will-change: auto;
+}
+
+@media screen and (max-width: 37.5em) {
+  .info-popup {
+    padding: 2rem;
+  }
 }
